@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+    <h1>注册</h1>
+    <form method="post" id="regForm">
+
+      <div>
+
+        <input type="text" name="username" placeholder="用户名">
+      </div>
+      <div>
+        <input type="password" name="password" placeholder="密码">
+      </div>
+      <div>
+        <input type="number" name="age" placeholder="年龄">
+      </div>
+      <div>
+        <input type="tel" name="phone" placeholder="电话">
+      </div>
+      <div>
+        <input type="email" name="email" placeholder="e_Mail">
+      </div>
+      <div>
+        <input type="number" name="deptId" placeholder="部门编号">
+
+      </div>
+        <input type="submit" value="保存">
+
+    </form>
+<script src="jquery-3.4.1/jquery-3.4.1.js"></script>
+<script>
+ $(function () {
+      //在表单提交时候执行一个函数
+      $('#regForm').submit(function () {
+          // console.log('测试');
+          let  data = $('#regForm').serialize();//抓取表单的数据
+          console.log(data);
+          //将数据ajax方式提交到服务器
+          $.ajax({
+              url:'handle_reg',
+              method:'POST',
+              data:data,
+              success:function (r) {
+                console.log(r);
+              }
+          });
+          return false;
+      });
+ });
+</script>
+</body>
+</html>
